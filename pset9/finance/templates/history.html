@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <p class="h3">Transaction History</p>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price (per share)</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Each transaction is a dict with 4 keys for each column -->
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction["symbol"] }}</td>
+                    <td>{{ transaction["name"] }}</td>
+                    <td>{{ transaction["shares"] }}</td>
+                    <td>{{ transaction["price"] }}</td>
+                    <td>{{ transaction["transacted"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

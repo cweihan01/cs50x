@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <p class="h2">My Portfolio</p>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price (per share)</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Each stock is a dict with 5 keys for each table column -->
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["shares"] }}</td>
+                    <td>{{ stock["price"] }}</td>
+                    <td>{{ stock["total"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4"><b>BALANCE</b></td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <td colspan="4"><b>GRAND TOTAL</b></td>
+                <td><b>{{ grand_total }}</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}
